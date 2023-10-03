@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Basic Table</title>
+        <link href="css/main.css" rel="stylesheet"/>
+        <style>
+            body {
+                font-family: Sans-Serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Template Injection Table</h1>
+        <div id="example-table"></div>
+        <br>
+        <button class="button-28" id="btnToggleErr" onclick="togglePolyglots('err')">
+            Toggle Error Polyglots
+        </button>
+        <button class="button-28"  id="btnToggleNonErr" onclick="togglePolyglots('nonerr')">
+            Toggle Non-Error Polyglots
+        </button>
+        <br>
+        <h2>How to Use the Template Injection Table?</h2>
+        <p>
+            If you're not familiar with template injections or the template injection methodology, take a look at our blog post about template injections: TODO LINK.
+            <br>
+            To make the detection of template injections and identification of template engines as efficient as possible, we have created polyglots based on the 44 most relevant template engines. 
+            This table presents these and other polyglots along with the responses from the 44 template engines. 
+            <br>The table can be used in the following manner:
+            <br><br>
+            <b>1. Detection</b>
+            <br>
+            First, use the universal error polyglot PG7. This will cause all tested template engines to throw an error. 
+            However, if the web application catches these errors and there is no change in behaviour, then the error polyglots do not provide any information. 
+            In this case, the 3 universal non-error polyglots can be used as long as the user input is reflected. 
+            Together they ensure that the user input is rendered at least once in each of the template engines tested.
+            If the input length is very limited and the universal polyglots are too long, the language-specific polyglots can be used instead. 
+            <br><br>
+            <b>2. Identification</b>
+            <br>
+            To verify template injection and identify the template engine, use the remaining polyglots and filter for the response returned until only one template engine remains. 
+            As long as the user input is reflected, the non-error polyglots are usually more effective at weeding out the remaining template engines.
+        </p>
+
+        <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"></script>
+        <script type="text/javascript" src="engines.js"></script>
+        <script>
+
+        //create row popup contents
+        var rowPopupFormatter = function(e, row, onRendered){
+            var data = row.getData();
+            container = document.createElement("div");
+            contents = "<strong style='font-size:1.2em;'>"+data.engine+" Details</strong><br/><ul style='padding:0;  margin-top:10px; margin-bottom:0;'>";
+            contents += "<li><strong>Language:</strong> " + data.language + "</li>";
+            contents += "<li><strong>Tested Version:</strong> " + data.version + "</li>";
+            if (data.documentation != undefined && data.documentation != "") {
+                contents += "<li><strong>Documentation:</strong> <a href=" + data.documentation + ">"+ data.documentation.split("/")[2] +"</a></li>";
+            }
+            if (data.package != undefined && data.package != "") {
+            contents += "<li><strong>Package Manager:</strong> <a href=" + data.package + ">"+ data.package.split("/")[2] +"</a></li>";
+            }
+
+            container.innerHTML = contents;
+
+            return container;
+        };
+
+        //create header popup contents
+        var headerPopupFormatter = function(e, column, onRendered){
+            var container = document.createElement("div");
+            contents = "Successfully copied!";
+            try {
+                unescapedPolyglot = unescapeHTML(column.getDefinition().title)
+                navigator.clipboard.writeText(unescapedPolyglot);
+            } catch (ex) {
+                contents = ex;
+            } finally {
+                container.innerHTML = contents;
+                return container;
+            }
+        }
+
+        // copy icon
+        var iconCopy = '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#000000}</style><path d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/><title>Copy to clipboard</title></svg>'
+
+        //define data
+        var tabledata = enginesArr;
+
+        //define table
+        var table = new Tabulator("#example-table", {
+            rowClickPopup:rowPopupFormatter, //add click popup to row
+            data:tabledata,
+            layout:"fitData",
+            renderHorizontal:"virtual",
+            height:"600px",
+            initialSort: [
+                {column:"engine", dir: "asc"}, // default sort by template engine name
+            ],
+            columns:[
+                {//create column group
+                    title:"Information",
+                    columns:[
+                        {title:"Template Engine", field:"engine", headerFilter:"input", resizable:false},
+                        {title:"Language", field:"language", headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false},
+                    ],
+                },
+                {//create column group
+                    title:"Universal Error-Based Polyglots",
+                    columns:[
+                        {title:escapeHTML("<%'${{/#{@}}%>{{"), field:"err1", headerTooltip:"51/51 error, length 16.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%'${{#{@}}%>"), field:"err2", headerTooltip:"47/51 error, 3/51 modified, length 13.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("${{<%[%'\"}}%\\"), field:"err3", headerTooltip:"37/51 error, 2/51 modified, length 13. It behaves identical to ${{<%[%'\"}}%\\. Unknown creator.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<#set($x<%={{={@{#{${xux}}%>)"), field:"err4", headerTooltip:"46/51 error, 4/51 modified, length 29. Created by Diogo Miguel Reis Silva (2018).", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%={{={@{#{${xu}}%>"), field:"err5", headerTooltip:"44/51 error, 4/51 modified, length 19. Created by Diogo Miguel Reis Silva (2018).", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                    ],
+                },
+                {//create column group
+                    title:"Specific Error-Based Polyglots",
+                    columns:[
+                        {title:escapeHTML("${{/#}}"), field:"errPython", headerTooltip:"35/51 error, 3/51 modified, length 7. For all 9 examined Python template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%{{#{%>}"), field:"errRuby", headerTooltip:"37/51 error, 3/51 modified, length 9. For all 6 examined Ruby template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{@"), field:"errDotnet", headerTooltip:"25/51 error, 1/51 modified, length 3. For all 5 examined Dotnet template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%'#{@}"), field:"errJava", headerTooltip:"19/51 error, 2/51 modified, length 7. For all 5 examined Java template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<th:t=\"${xu}#foreach."), field:"errJava2", headerTooltip:"15/51 error, 1/51 modified, length 22. For all 5 examined Java template engines. Created by Diogo Miguel Reis Silva (2018).", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{/}}"), field:"errPHP", headerTooltip:"28/51 error, 4/51 error, length 5. For all 8 examined PHP template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%${{#{%>}}"), field:"errJavascript", headerTooltip:"44/51 error, 4/51 modified, length 11. For all 13 examined Javascript template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{"), field:"errGolang", headerTooltip:"22/51 error, 3/51 modified, length 2. For all 2 examined Golang template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%"), field:"errElixir", headerTooltip:"8/51 error, 2/51 modified, length 2. For the 1 examined Elixir template engine.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                    ],
+                },
+                {//create column group
+                    title:"Universal Non-Error-Based Polyglots",
+                    columns:[
+                        {title:escapeHTML("p \">[[${{1}}]]"), field:"nonerr1", headerTooltip:"34/51 modified, 5/51 error, length 14.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%=1%>@*#{1}"), field:"nonerr2", headerTooltip:"22/51 modified, 2/51 error, length 12.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{##}/*{{.}}*/"), field:"nonerr3", headerTooltip:"15/51 modified, 20/51 error, length 13.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                    ],
+                },
+                {//create column group
+                    title:"Specific Non-Error-Based Polyglots",
+                    columns:[
+                        {title:escapeHTML("{#${{1}}#}}"), field:"nonerrPython", headerTooltip:"28/51 modified, 11/51 error, length 11. For all 9 examined Python template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%=1%>#{2}{{a}}"), field:"nonerrRuby", headerTooltip:"32/51 modified, 14/51 error, length 15. For all 6 examined Ruby template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{1}}@*"), field:"nonerrDotnet", headerTooltip:"28/51 modified, 5/51 error, length 7. For all 5 examined Dotnet template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("a\">##[[${1}]]"), field:"nonerrJava", headerTooltip:"15/51 modified, 2/51 error, length 13. For all 5 examined Java template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{7}}}"), field:"nonerrPHP", headerTooltip:"26/51 modified, 6/51 error, length 6. For all 8 examined PHP template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("//*<!--{##<%=1%>{{!--{{1}}--}}-->*/#}"), field:"nonerrJavascript", headerTooltip:"31/51 modified, 14/51 error, length 37. For all 14 examined Javascript template engines (except AngularJS and Pug (Inline)).", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{.}}"), field:"nonerrGolang", headerTooltip:"11/51 modified, 20/51 error, length 5. For all 2 examined Golang template engines.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("<%%a%>"), field:"nonerrElixir", headerTooltip:"8/51 modified, 6/51 error, length 6. For the 1 examined Elixir template engine.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("{{1in[1]}}"), field:"nonerrIdent1", headerTooltip:"14/51 modified, 18/51 error, length 10. To differentiate between Tornado/Twig (Sandbox), Jinja2/Nunjucks/Twig or Blade/SimpleTemplateEngine.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("${\"<%-1-%>\"}"), field:"nonerrIdent2", headerTooltip:"14/51 modified, 5/51 error, length 12. To differentiate between ERB/Erubi/Erubis/EEx/EJS, Underscore/Eta or Mako/Chameleon.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                        {title:escapeHTML("#evaluate(\"a\")"), field:"nonerrIdent3", headerTooltip:"3/51 modified, 2/51 error, length 14. To differentiate between Velocity/Velocity.js.", headerPopup:headerPopupFormatter, headerPopupIcon:iconCopy, headerFilter:"list", headerFilterParams:{valuesLookup:true, clearable:true}, resizable:false, formatter:"html"},
+                    ],
+                },
+            ],
+        });
+
+        // button logic
+        function togglePolyglots(type) {
+            console.log(type)
+            if (type == 'err') {
+                table.toggleColumn("err1")
+                table.toggleColumn("err2")
+                table.toggleColumn("err3")
+                table.toggleColumn("err4")
+                table.toggleColumn("err5")
+                table.toggleColumn("errPython")
+                table.toggleColumn("errRuby")
+                table.toggleColumn("errDotnet")
+                table.toggleColumn("errJava")
+                table.toggleColumn("errJava2")
+                table.toggleColumn("errPHP")
+                table.toggleColumn("errJavascript")
+                table.toggleColumn("errGolang")
+                table.toggleColumn("errElixir")
+            } else if (type == 'nonerr') {
+                table.toggleColumn("nonerr1")
+                table.toggleColumn("nonerr2")
+                table.toggleColumn("nonerr3")
+                table.toggleColumn("nonerrPython")
+                table.toggleColumn("nonerrRuby")
+                table.toggleColumn("nonerrDotnet")
+                table.toggleColumn("nonerrJava")
+                table.toggleColumn("nonerrPHP")
+                table.toggleColumn("nonerrJavascript")
+                table.toggleColumn("nonerrGolang")
+                table.toggleColumn("nonerrElixir")
+                table.toggleColumn("nonerrIdent1")
+                table.toggleColumn("nonerrIdent2")
+                table.toggleColumn("nonerrIdent3")
+            }
+        }
+        </script>
+    </body>
+</html>
