@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 # Template Injection Table
-The Template Injection Table is intended to help during the testing of an application for [template injection](#background-information) vulnerabilities. It was developed by [Hackmanit](https://hackmanit.de).
+The Template Injection Table is intended to help during the testing of an application for [template injection](#background-information) vulnerabilities. It was developed by [Hackmanit](https://hackmanit.de) and Maximilian Hildebrand.
 
 The table consists of so-called "polyglots" that can be used to detect template injection possibilities and identify which template engine is used by an application.
 
