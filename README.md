@@ -19,10 +19,10 @@ To make the detection of template injection possibilities and identification of 
 
 The table can be used in the following manner:
 1. **Detection:**
-First, use the universal error polyglot `PG7`. This will cause all tested template engines to throw an error. However, if the web application catches these errors and there is no change in behavior, then the error polyglots do not provide any information. In this case, the three universal non-error polyglots can be used as long as the user input is reflected. Together they ensure that the user input is rendered at least once in each of the template engines tested. If the input length is very limited and the universal polyglots are too long, the language-specific polyglots can be used instead.
+First, use the first universal error-based polyglot `<%'${{/#{@}}%>{{`. This will cause all tested template engines to throw an error. However, if the web application catches these errors and there is no change in behavior, then the error-based polyglots do not provide any information. In this case, the three universal non-error-based polyglots can be used as long as the user input is reflected. Together they ensure that the user input is rendered at least once in each of the template engines tested. If the input length is very limited and the universal polyglots are too long, the language-specific polyglots can be used instead.
 
-2. **Identification:**
-To verify template injection and identify the template engine used by the application, use the remaining polyglots and filter for the response returned until only one template engine remains. As long as the user input is reflected, the non-error polyglots are usually more effective at weeding out the remaining template engines.
+3. **Identification:**
+To verify template injection and identify the template engine used by the application, use the remaining polyglots and filter for the response returned until only one template engine remains. As long as the user input is reflected, the non-error-based polyglots are usually more effective at weeding out the remaining template engines.
 
 ## How to Use This Repository
 Simply access https://cheatsheet.hackmanit.de/template-injection-table to use the table as described in [How to Use the Template Injection Table?](#how-to-use-the-template-injection-table).
