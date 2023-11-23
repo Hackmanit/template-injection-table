@@ -5,6 +5,7 @@ svg:hover {
     fill: white;
 }
 
+
 /* CSS */
 .button-28 {
   appearance: none;
@@ -47,4 +48,211 @@ svg:hover {
 .button-28:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+/* Hackmanit Fonts */
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200;
+  src: local('Nunito Sans ExtraLight'), local('NunitoSans-ExtraLight'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200;
+  src: local('Nunito Sans ExtraLight Italic'), local('NunitoSans-ExtraLightItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-200italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Nunito Sans Light'), local('NunitoSans-Light'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300;
+  src: local('Nunito Sans Light Italic'), local('NunitoSans-LightItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-300italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Nunito Sans Regular'), local('NunitoSans-Regular'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-regular.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-regular.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Nunito Sans Italic'), local('NunitoSans-Italic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Nunito Sans SemiBold'), local('NunitoSans-SemiBold'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  src: local('Nunito Sans SemiBold Italic'), local('NunitoSans-SemiBoldItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-600italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Nunito Sans Bold'), local('NunitoSans-Bold'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Nunito Sans Bold Italic'), local('NunitoSans-BoldItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-700italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  src: local('Nunito Sans ExtraBold Italic'), local('NunitoSans-ExtraBoldItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: local('Nunito Sans ExtraBold'), local('NunitoSans-ExtraBold'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-800.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: local('Nunito Sans Black'), local('NunitoSans-Black'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 900;
+  src: local('Nunito Sans Black Italic'), local('NunitoSans-BlackItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/nunito-sans-v6-latin-900italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Courier Prime Regular'), local('CourierPrime-Regular'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-regular.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-regular.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Courier Prime Bold'), local('CourierPrime-Bold'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: local('Courier Prime Italic'), local('CourierPrime-Italic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: local('Courier Prime Bold Italic'), local('CourierPrime-BoldItalic'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700italic.woff2') format('woff2'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700italic.woff') format('woff'),
+       url('https://www.hackmanit.de/templates/hackmanit2021j4/fonts/courier-prime-v2-latin-700italic.ttf') format('truetype');
+}
+
+body {
+  font-family: Nunito Sans,sans-serif;
+}
+
+code {
+  font-family: Courier Prime,monospace,serif;
 }
