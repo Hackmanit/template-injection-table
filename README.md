@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 # Template Injection Table
-The Template Injection Table is intended to help during the testing of an application for [template injection](#background-information) vulnerabilities. It was developed by [Hackmanit](https://hackmanit.de) and Maximilian Hildebrand.
+The Template Injection Table is intended to help during the testing of an application for [template injection](#background-information) vulnerabilities. It was developed by [Hackmanit](https://hackmanit.de) and [Maximilian Hildebrand](https://www.github.com/m10x).
 
 The table consists of so-called "polyglots" that can be used to detect template injection possibilities and identify which template engine is used by an application.
 
@@ -41,6 +41,6 @@ You can find results of the master's thesis publicly available here:
 - [Master's Thesis (PDF)](https://www.hackmanit.de/images/download/thesis/Improving-the-Detection-and-Identification-of-Template-Engines-for-Large-Scale-Template-Injection-Scanning-Maximilian-Hildebrand-Master-Thesis-Hackmanit.pdf)
 
 ## License
-The Template Injection Table was developed by [Hackmanit](https://hackmanit.de) and Maximilian Hildebrand as a part of his master's thesis. The Template Injection Table is licensed under the [Apache License, Version 2.0](license.txt).
+The Template Injection Table was developed by [Hackmanit](https://hackmanit.de) and [Maximilian Hildebrand](https://www.github.com/m10x) as a part of his master's thesis. The Template Injection Table is licensed under the [Apache License, Version 2.0](license.txt).
 
 <a href="https://hackmanit.de"><img src="https://www.hackmanit.de/templates/hackmanit-v2/img/wbm_hackmanit.png" width="30%"></a>
