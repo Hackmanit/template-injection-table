@@ -13,7 +13,7 @@ The table consists of so-called "polyglots" that can be used to detect template 
 
 ## How to Use the Template Injection Table?
 
-If you're not familiar with template injection or the template injection methodology, take a look at our blog post about template injection: [Soon to be released](https://www.hackmanit.de/en/blog-en/)
+If you're not familiar with template injection or the template injection methodology, take a look at our blog post about template injection: [Template Injection Vulnerabilities – Understand, Detect, Identify](https://hackmanit.de/en/blog-en/178-template-injection-vulnerabilities-understand-detect-identify)
 
 To make the detection of template injection possibilities and identification of template engines as efficient as possible, we have created polyglots based on the 44 most relevant template engines (as of September 2023). This table presents these and other polyglots along with the responses from the 44 template engines to these polyglots.
 
