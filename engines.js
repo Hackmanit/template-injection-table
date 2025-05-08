@@ -370,6 +370,15 @@ enginesArr = [
         nonerr1: "p \">[[$]]", nonerr2: respUnmodified, nonerr3: "{##}/**/",
         nonerrRuby: "<%=1%>#{2}", nonerrDotnet: "@*", nonerrJava: respUnmodified, nonerrPHP: respError, nonerrPython: "{#$#}}", nonerrJavascript: "//*<!--{##<%=1%>-->*/#}", nonerrGolang: respEmpty, nonerrElixir: respUnmodified, nonerrIdent1: respError, nonerrIdent2: respUnmodified, nonerrIdent3: respUnmodified
     },
+    // Handlebars (Context)
+    {
+        engine: "Handlebars (Context)",
+        language: "Javascript", version: "4.7.7", documentation: "https://handlebarsjs.com/guide/", package: "https://www.npmjs.com/package/handlebars",
+        err1: respError, err2: respError, err3: respError, err4: respError, err5: respError, errJava2: respUnmodified,
+        errRuby: respError, errDotnet: respError, errJava: respUnmodified, errPHP: respError, errPython: respError, errJavascript: respError, errGolang: respError, errElixir: respUnmodified,
+        nonerr1: "p \">[[$]]", nonerr2: respUnmodified, nonerr3: "{##}/*[object Object]*/",
+        nonerrRuby: "<%=1%>#{2}", nonerrDotnet: "@*", nonerrJava: respUnmodified, nonerrPHP: respError, nonerrPython: "{#$#}}", nonerrJavascript: "//*<!--{##<%=1%>-->*/#}", nonerrGolang: "[object Object]", nonerrElixir: respUnmodified, nonerrIdent1: respError, nonerrIdent2: respUnmodified, nonerrIdent3: respUnmodified
+    },
     // EJS
     {
         engine: "EJS",
